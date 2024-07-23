@@ -1,0 +1,12 @@
+.header{
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.toggle{
+    color: #00BD2B;
+    cursor: pointer;
+    margin-right: 10px;
+}

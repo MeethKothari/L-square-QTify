@@ -1,4 +1,9 @@
 .logo{
     /* margin-left: auto; */
-    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    left: 32px;
+    top: 20px;
+    height: 34px;
 }
