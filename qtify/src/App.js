@@ -11,6 +11,12 @@ function App() {
   const [newAlbum, setNewAlbum] = useState([]);
   const [songsData, setSongsData]=useState([])
 
+  useEffect(()=>{
+    fetchTopAlbum();
+    fetchNewAlbum();
+    fetchAllSongs();
+  },[])
+
   let fetchTopAlbum = async()=>{
     let url = "https://qtify-backend-labs.crio.do/albums/top";
     try {
@@ -50,11 +56,7 @@ function App() {
  
   
   
-  useEffect(()=>{
-    fetchTopAlbum();
-    fetchNewAlbum();
-    fetchAllSongs();
-  },[])
+ 
   
   return (
     <div>

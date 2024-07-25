@@ -57,15 +57,56 @@
 // }
 
 
+// ---------------------------------------------------------------------------------------------------------------------
+
+// import React from 'react';
+// import styles from "./Cards.module.css";
+// import Typography from '@mui/material/Typography';
+// import Chip from '@mui/material/Chip';
+
+// export default function Cards({data, type}) {
+// //console.log('recd-data-from-section-comp', data);
+// const {image,follows,title,likes}=data;
+//   return (
+//   <>
+//   { type === "album" ? ( 
+//     <div className="container">
+//         <div className="card">
+//             <img height="180"
+//                  width="150" 
+//                  src={image} alt={title}/>
+//             <div className="card-content">
+//                 <h2>{follows}</h2>
+//                 {/* <p>Card description goes here. This is a sample description for the first card.</p> */}
+//             </div>
+//         </div>
+//     </div>
+//   )  : ( 
+
+//     <div className="container">
+//         <div className="card">
+//             <img height="180" 
+//                  width = "150"
+//                  src={image} alt={title}/>
+//             <div className="card-content">
+//                 <h2>{likes}</h2>
+//                 {/* <p>Card description goes here. This is a sample description for the first card.</p> */}
+//             </div>
+//         </div>
+//     </div>
+//   )}
+//   </>
+//   );
+// }
+
+
+
+// -------------------------------------------------------------------------------------------------------------------
+
 import React from 'react';
 import styles from "./Cards.module.css";
-//import Card from '@mui/material/Card';
-//import CardContent from '@mui/material/CardContent';
-//import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-//import { CardActionArea } from '@mui/material';
 import Chip from '@mui/material/Chip';
-//import Tooltip from '@mui/material/Tooltip';
 
 export default function Cards({data, type}) {
 //console.log('recd-data-from-section-comp', data);
@@ -73,7 +114,7 @@ const {image,follows,title,likes}=data;
   return (
     <>
   { type === "album" ? ( 
-    <div>
+  <div className={styles.alignment}>
   <div className={styles.container} >
     <div>
         <img
@@ -84,35 +125,54 @@ const {image,follows,title,likes}=data;
         
         <Chip sx={{bgcolor: '#121212', color: '#FFFFFF', marginLeft:'5px', marginTop:'5px', marginBottom:"5px",fontFamily:'Poppins'}} className={styles.Chip} 
         label={`${follows} Follows`} />
+        {/* label={type === "album" ? `${follows} Follows` : `${likes} Likes`} */}
     </div>
     
         <Typography sx={{fontFamily:'poppins', color:"FFFFFF", height:"100", bgcolor: '#121212', paddingLeft:"5px"}} component="div">
             {title}
         </Typography>
+  
   </div>
-  </div>)  : ( 
-      <div>
-        <div className={styles.container} >
-           <div>
-            <img
-           height="180"
-           width="100%"
-           src={image}
-           alt={title}/>
+  </div>
+  
+  )  : ( 
+  <div className={styles.alignment}>
+  <div className={styles.container} >
+    <div>
+        <img
+          height="180"
+          width="100%"
+          src={image}
+          alt={title}/>
+           
+
+        <Chip sx={{bgcolor: '#121212', color: '#FFFFFF', marginLeft:'5px', marginTop:'5px', marginBottom:"5px",fontFamily:'Poppins'}} className={styles.Chip} 
+          label={`${likes} Likes`} />
         
-          <Chip sx={{bgcolor: '#121212', color: '#FFFFFF', marginLeft:'5px', marginTop:'5px', marginBottom:"5px",fontFamily:'Poppins'}} className={styles.Chip} 
-           label={`${likes} Likes`} />
-           </div>
+   </div>
     
         <Typography sx={{fontFamily:'poppins', color:"FFFFFF", height:"100", bgcolor: '#121212', paddingLeft:"5px"}} component="div">
             {title}
-        </Typography>
-        </div>
-      </div>
-    )}
+         </Typography>
+  </div>
+  </div>
+     )}
 </>
-  );
-}
+   );
+ }
+
+
+// -----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 
 
