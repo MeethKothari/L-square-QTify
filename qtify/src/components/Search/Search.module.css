@@ -1,29 +1,40 @@
 .search {
     padding: 14px 20px;
     height: 100%;
-    border-radius: 8px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border: 1px solid var(--color-black);
+    border-radius: 8px 0px 0px 8px;
+    border: 1px solid black;
     width: 502px;
     /* width: 20rem; */
   }
   
   .wrapper {
-    display: flex;
+    /* display: flex;
     align-items: stretch;
     height: 48px;
-    margin: auto;
+    margin: auto; */
+    display: flex;
+    width: 568px;
+    height: 48px;
+    top: 13px;
+    left: 436px;
+    gap: 0px;
+    border-radius: 8px 0px 0px 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+
+
   }
   
   .searchButton {
-    border-radius: 0px 5px 5px 0px;
-    padding: 14px 20px;
-    height: 100%;
-    border: 1px solid var(--color-black);
-    border-left: none;
-    cursor: pointer;
-    height: 100%;
+    width: 66px;
+    height: 48px;
+    top: 13px;
+    left: 938px; 
+    gap: 0px;
+    border-radius: 0px 8px 8px 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+
   }
   
   /* .listElement {
