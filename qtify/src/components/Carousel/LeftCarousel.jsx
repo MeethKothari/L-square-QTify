@@ -5,7 +5,7 @@ import { useSwiper } from "swiper/react";
 import styles from "./Carousel.module.css";
 
 
-const LeftNav = () => {
+const LeftCarousel = () => {
     const swiper = useSwiper();
     const[starting, setStarting] = useState(swiper.isBeginning);
 
@@ -23,4 +23,4 @@ const LeftNav = () => {
   )
 }
 
-export default LeftNav;
+export default LeftCarousel;

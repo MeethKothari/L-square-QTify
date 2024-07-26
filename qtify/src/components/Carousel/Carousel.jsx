@@ -1,42 +1,41 @@
 import React, { useEffect } from 'react'
 import {Swiper,SwiperSlide, useSwiper } from 'swiper/react'
 import styles from "./Carousel.module.css"
-import RightNav from './RightNav.jsx'
-import LeftNav from './LeftNav.jsx'
+import RightCarousel from './RightCarousel.jsx'
+import LeftCarousel from './LeftCarousel.jsx'
 import "swiper/css"
 
 
-const Controls=({data})=>{
-  const swiper = useSwiper(data);
-  useEffect(() => {
-    swiper.slideTo(0, 1);
-}, [data]);
-return <></>
-  
+// const Controls=({data})=>{
+//   const swiper = useSwiper(data);
+//   useEffect(() => {
+//     swiper.slideTo(0, 1);
+// }, [data]);
+// return <></>
+// }
 
-}
-
-const Carousel = ({data,renderComponent}) => {
+const Carousel = ({data,renderCardWithCarousel}) => {
   return (
-       <div className={styles.container}>
+      <div className={styles.container}>
         <Swiper 
         style={{padding:"40px" }} 
         initialSlide={0} 
         slidesPerView={5}
         spaceBetween={45} 
         allowTouchMove >
-            <Controls data={data}/>
-            <LeftNav/>
-            <RightNav/>
+            
+            <LeftCarousel/>
             {
               data.map((element)=>{
                 return (
-                  <SwiperSlide key={element.id}>{renderComponent(element)}</SwiperSlide>
+                  <SwiperSlide key={element.id}>{renderCardWithCarousel(element)}</SwiperSlide>
                 )
               })
             }
-            </Swiper>
-        </div>
+            <RightCarousel/>
+            
+        </Swiper>
+      </div>
   )
 }
 

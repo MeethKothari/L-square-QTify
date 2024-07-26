@@ -3,6 +3,7 @@ import Hero from "./components/Hero/Hero";
 import Section from './components/Section/Section';
 import BasicTabs from "./components/Tabs/Tabs";
 import Carousel from "./components/Carousel/Carousel";
+import styles from "./App.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 

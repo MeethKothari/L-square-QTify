@@ -5,7 +5,7 @@ import { useSwiper } from 'swiper/react';
 import styles from "./Carousel.module.css";
 
 
-function RightNav() {
+function RightCarousel() {
     const swiper = useSwiper();
     const [ending, setEnding] = useState(swiper.isEnd);
 
@@ -22,5 +22,5 @@ function RightNav() {
   )
 }
 
-export default RightNav;
+export default RightCarousel;
 

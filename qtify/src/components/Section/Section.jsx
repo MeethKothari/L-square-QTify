@@ -72,7 +72,7 @@ const Section = ({data, title, type}) => {
                    when second option becomes true here which is show all
                    we have to send renderCardWithCarousel function as this will render cards in carouselsection 
                */}
-               <Carousel data={data} renderComponent={(data)=><Cards data={data} type={type} key={data.id}/>}/>
+               <Carousel data={data} renderCardWithCarousel={(data)=><Cards data={data} type={type} key={data.id}/>}/>
               </div>  
             )}
           </>
