@@ -33,11 +33,13 @@ import styles from "./Navbar.module.css";
 
 function Navbar() {
   return (
+    <>
     <nav className={styles.navbar}>
       <Logo />
       <Search placeholder="Search a song of your choice"/>
       <Button text="Give Feedback"/>
     </nav>
+    </>
   );
 }
 
