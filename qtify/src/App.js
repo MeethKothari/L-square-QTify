@@ -12,7 +12,6 @@ function App() {
   const [topAlbum, setTopAlbum] = useState([]);
   const [newAlbum, setNewAlbum] = useState([]);
   const [songsData, setSongsData]=useState([]);
-  const [filterData, setFilterData]=useState([]); 
 
   
 
@@ -45,7 +44,6 @@ function App() {
     try {
       let res = await axios.get(url);
       setSongsData(res.data);
-      setFilterData(res.data);
       //console.log("New Album",res.data);
     } catch (error) {
       alert(error.message);
