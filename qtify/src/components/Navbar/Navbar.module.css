@@ -1,5 +1,5 @@
-.navbar {
-    /* background-color: var(--color-primary); */
+/* .navbar {
+
     display: flex;
     justify-content:space-between;
     align-items: center;
@@ -9,5 +9,16 @@
     width: 100%;
     gap: 0px;
     opacity: 0px;
-  }
+  } */
   
+
+
+   .navbar{
+    background-color: #00BD2B;
+    height: 74px;
+    width: 100vw;
+    padding: 0px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
