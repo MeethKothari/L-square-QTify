@@ -1,12 +1,20 @@
 .header{
     display: flex;
-    color: white;
+    color: #FFFFFF;
     justify-content: space-between;
-    align-items: baseline;
+    margin: 15px;
+    
 }
 
 .toggle{
     color: #00BD2B;
     cursor: pointer;
-    margin-right: 10px;
+}
+
+.CardWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 18px;
+    margin: 15px;
 }

@@ -30,37 +30,57 @@
 
 import React from 'react';
 import Cards from '../Cards/Cards';
+import Carousel from '../Carousel/Carousel.jsx';
 import styles from "./Section.module.css";
 import { CircularProgress } from '@mui/material';
 import { useState} from 'react';
 // import axios from "axios";
 
-export default function Section({data, title, type}) {
-    //console.log(data, title)
-    const [toggle, setToggle] = useState(false);
-    // if we use ! in front of the variable then it works as vice versa 
-    const handleToggle = ()=>{
-      setToggle(!toggle);
-    }
+const Section = ({data, title, type}) => {
+  // if we use ! in front of the variable then it works as vice versa
+  // if set true and  !toggle ? "Collapse All" : "Show All" collapse all at first then it will show as collapse initially
+  const [toggle, setToggle] = useState(true); 
+  const handleToggle = ()=>{
+    setToggle(!toggle);
+  }
 
-    return (
-      <>
+  return (
+    <div>
     <div className={styles.header}>
       <h3>{title}</h3>
-    <div>
       <h3 className={styles.toggle} onClick={handleToggle}>
         { type === "song" ? null : 
           !toggle ? "Collapse All" : "Show All"}
       </h3>
     </div>
-    </div>
 
-    {data.length===0 ? (
+    { 
+      data.length===0 ? (
      <CircularProgress/>
-    ) : ( data.map((element)=> {return ( <Cards data={element} type={type}/>)}))
+    ) : ( <>
+             {/* if toggle is false then first condition will render - show all, else show second - Collpase */}
+            {!toggle?(
+                <div className={styles.CardWrapper}>
+                {data.map((element)=>(
+                    // passing data to cards component
+                    <Cards data={element} type={type} />
+                ))}
+                </div>
+            ):(
+              <div>
+               {/* passing data to carousel component 
+                   when second option becomes true here which is show all
+                   we have to send renderCardWithCarousel function as this will render cards in carouselsection 
+               */}
+               <Carousel data={data} renderComponent={(data)=><Cards data={data} type={type} key={data.id}/>}/>
+              </div>  
+            )}
+          </>
+        )
    
     } 
-    </>
+    </div>
   )
 }
 
+export default Section;

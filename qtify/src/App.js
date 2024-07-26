@@ -1,6 +1,8 @@
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Section from './components/Section/Section';
+import BasicTabs from "./components/Tabs/Tabs";
+import Carousel from "./components/Carousel/Carousel";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -9,13 +11,10 @@ import { useEffect, useState } from "react";
 function App() {
   const [topAlbum, setTopAlbum] = useState([]);
   const [newAlbum, setNewAlbum] = useState([]);
-  const [songsData, setSongsData]=useState([])
+  const [songsData, setSongsData]=useState([]);
+  const [filterData, setFilterData]=useState([]); 
 
-  useEffect(()=>{
-    fetchTopAlbum();
-    fetchNewAlbum();
-    fetchAllSongs();
-  },[])
+  
 
   let fetchTopAlbum = async()=>{
     let url = "https://qtify-backend-labs.crio.do/albums/top";
@@ -46,6 +45,7 @@ function App() {
     try {
       let res = await axios.get(url);
       setSongsData(res.data);
+      setFilterData(res.data);
       //console.log("New Album",res.data);
     } catch (error) {
       alert(error.message);
@@ -53,12 +53,17 @@ function App() {
     }
   }
 
- 
-  
-  
- 
-  
-  return (
+
+
+
+  useEffect(()=>{
+    fetchTopAlbum();
+    fetchNewAlbum();
+    fetchAllSongs();
+  },[])
+
+
+return (
     <div>
       <Navbar/>
       <Hero/>

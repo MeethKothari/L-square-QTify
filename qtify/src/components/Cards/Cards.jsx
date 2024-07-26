@@ -103,67 +103,124 @@
 
 // -------------------------------------------------------------------------------------------------------------------
 
-import React from 'react';
-import styles from "./Cards.module.css";
-import Typography from '@mui/material/Typography';
-import Chip from '@mui/material/Chip';
+// import React from 'react';
+// import styles from "./Cards.module.css";
+// import Typography from '@mui/material/Typography';
+// import Chip from '@mui/material/Chip';
 
-export default function Cards({data, type}) {
-//console.log('recd-data-from-section-comp', data);
-const {image,follows,title,likes}=data;
-  return (
-    <>
-  { type === "album" ? ( 
-  <div className={styles.alignment}>
-  <div className={styles.container} >
-    <div>
-        <img
-          height="180"
-          width="100%"
-          src={image}
-          alt={title}/>
+// export default function Cards({data, type}) {
+// //console.log('recd-data-from-section-comp', data);
+// const {image,follows,title,likes}=data;
+//   return (
+//     <>
+//   { type === "album" ? ( 
+//   <div className={styles.alignment}>
+//   <div className={styles.container} >
+//     <div>
+//         <img
+//           height="180"
+//           width="100%"
+//           src={image}
+//           alt={title}/>
         
-        <Chip sx={{bgcolor: '#121212', color: '#FFFFFF', marginLeft:'5px', marginTop:'5px', marginBottom:"5px",fontFamily:'Poppins'}} className={styles.Chip} 
-        label={`${follows} Follows`} />
-        {/* label={type === "album" ? `${follows} Follows` : `${likes} Likes`} */}
-    </div>
+//         <Chip sx={{bgcolor: '#121212', color: '#FFFFFF', marginLeft:'5px', marginTop:'5px', marginBottom:"5px",fontFamily:'Poppins'}} className={styles.Chip} 
+//         label={`${follows} Follows`} />
+//         {/* label={type === "album" ? `${follows} Follows` : `${likes} Likes`} */}
+//     </div>
     
-        <Typography sx={{fontFamily:'poppins', color:"FFFFFF", height:"100", bgcolor: '#121212', paddingLeft:"5px"}} component="div">
-            {title}
-        </Typography>
+//         <Typography sx={{fontFamily:'poppins', color:"FFFFFF", height:"100", bgcolor: '#121212', paddingLeft:"5px"}} component="div">
+//             {title}
+//         </Typography>
   
-  </div>
-  </div>
+//   </div>
+//   </div>
   
-  )  : ( 
-  <div className={styles.alignment}>
-  <div className={styles.container} >
-    <div>
-        <img
-          height="180"
-          width="100%"
-          src={image}
-          alt={title}/>
+//   )  : ( 
+//   <div className={styles.alignment}>
+//   <div className={styles.container} >
+//     <div>
+//         <img
+//           height="180"
+//           width="100%"
+//           src={image}
+//           alt={title}/>
            
 
-        <Chip sx={{bgcolor: '#121212', color: '#FFFFFF', marginLeft:'5px', marginTop:'5px', marginBottom:"5px",fontFamily:'Poppins'}} className={styles.Chip} 
-          label={`${likes} Likes`} />
+//         <Chip sx={{bgcolor: '#121212', color: '#FFFFFF', marginLeft:'5px', marginTop:'5px', marginBottom:"5px",fontFamily:'Poppins'}} className={styles.Chip} 
+//           label={`${likes} Likes`} />
         
-   </div>
+//    </div>
     
-        <Typography sx={{fontFamily:'poppins', color:"FFFFFF", height:"100", bgcolor: '#121212', paddingLeft:"5px"}} component="div">
-            {title}
-         </Typography>
-  </div>
-  </div>
-     )}
-</>
-   );
- }
+//         <Typography sx={{fontFamily:'poppins', color:"FFFFFF", height:"100", bgcolor: '#121212', paddingLeft:"5px"}} component="div">
+//             {title}
+//          </Typography>
+//   </div>
+//   </div>
+//      )}
+// </>
+//    );
+//  }
 
 
 // -----------------------------------------------------------------------------------------------------------------
 
+
+import React from "react";
+import styles from "./Cards.module.css";
+import { Chip, Tooltip } from "@mui/material";
+
+const Cards = ({ data, type }) => {
+  switch (type) {
+    case "album": {
+      const { image, follows, title, songs } = data;
+      return (
+      <div className={styles.alignment}>   
+        <Tooltip title={`${songs?.length} songs`} placement="top" arrow >
+          <div className={styles.wrapper} >
+            <div className={styles.card}>
+              <img src={image} alt="album" height="100%" width="100%"/>
+              <div className={styles.banner}>
+                <Chip
+                  label={`${follows} Follows`}
+                  className={styles.chip}
+                  size="small"
+                />
+              </div>
+            </div>
+            <div className={styles.titleWrapper}>
+              <p>{title}</p>
+            </div>
+          </div>
+        </Tooltip>
+        </div>
+      );
+    }
+
+    case "song": {
+      const { image, likes, title, songs } = data;
+      return (
+        <div className={styles.wrapper}>
+          <div className={styles.card}>
+            <img src={image} alt="album" height="100%" width="100%"/>
+            <div className={styles.banner}>
+              <div className={styles.pill}>
+                <p>{likes} Likes</p>
+              </div>
+            </div>
+          </div>
+          <div className={styles.titleWrapper}>
+            <p>{title}</p>
+          </div>
+        </div>
+      );
+    }
+
+    default:
+      return <></>;
+  }
+}
+
+export default Cards;
 
 
 
